@@ -3,7 +3,7 @@ syntax = "proto3";
 message SophonPatchProto
 {
     repeated SophonPatchAssetProperty  PatchAssets  = 1;
-    repeated SophonUnusedAssetProperty UnusedAssets = 2;
+    map<string, SophonUnusedAssetInfo> UnusedAssets = 2;
 }
 
 message SophonPatchAssetProperty
@@ -32,12 +32,6 @@ message SophonPatchAssetChunk
     string OriginalFileName    = 8;
     int64  OriginalFileLength  = 9;
     string OriginalFileMd5     = 10; // md5 file hash BEFORE patching
-}
-
-message SophonUnusedAssetProperty
-{
-             string                VersionTag = 1;
-    repeated SophonUnusedAssetInfo AssetInfos = 2;
 }
 
 message SophonUnusedAssetInfo

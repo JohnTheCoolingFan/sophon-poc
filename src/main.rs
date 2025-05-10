@@ -12,7 +12,6 @@ use proto_parsers::{
     SophonManifest::{SophonManifestAssetProperty, SophonManifestProto},
     SophonPatch::{
         SophonPatchAssetChunk, SophonPatchAssetProperty, SophonPatchProto, SophonUnusedAssetFile,
-        SophonUnusedAssetProperty,
     },
 };
 use protobuf::Message;
@@ -149,9 +148,9 @@ fn sophon_apply_patches(
     let unused_assets_for_ver = patches_manifest
         .UnusedAssets
         .iter()
-        .find(|unused| unused.VersionTag == installed_ver);
-    if let Some(unused) = unused_assets_for_ver {
-        remove_unused_files(&unused.AssetInfos[0].Assets, &target_dir);
+        .find(|(version, _unused_asset)| *version == installed_ver);
+    if let Some((_unused_ver, unused_asset)) = unused_assets_for_ver {
+        remove_unused_files(&unused_asset.Assets, &target_dir);
     }
 
     for patchinfo in &patches_manifest.PatchAssets {
