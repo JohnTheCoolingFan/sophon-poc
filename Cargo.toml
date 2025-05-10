@@ -1,0 +1,17 @@
+[package]
+name = "sophon-poc"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+md5 = "0.7.0"
+minreq = { version = "2.13.4", features = ["https", "json-using-serde"] }
+protobuf = "3.7.2"
+reqwest = { version = "0.12.15", features = ["blocking"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+xxhash-rust = { version = "0.8.15", features = ["xxh64"] }
+zstd = "0.13.3"
+
+[build-dependencies]
+protobuf-codegen = "3.7.2"

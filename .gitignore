@@ -1,0 +1,5 @@
+/target
+manifest_*.bin
+manifest_*.zstd
+game_manifest.txt
+patch.txt
